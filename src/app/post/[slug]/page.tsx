@@ -1,9 +1,13 @@
 import styles from './styles.module.scss'
+import { getItemBySlug } from '@/utils/actions/get-data'
+import { PostProps } from '@/utils/post.type'
 
-// slug sao os parenteses
-export default function Page({ params: { slug } }: {
+export default async function Page({ params: { slug } }: {
   params: { slug: string }
 }){
+  const { objects }: PostProps = await getItemBySlug(slug);
+  console.log(JSON.stringify(objects, null, 2));
+
   return(
     <div>
       <h1>PAGINA {slug}</h1>
