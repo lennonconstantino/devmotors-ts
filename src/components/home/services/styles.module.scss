@@ -126,7 +126,7 @@
 @media (min-width: 640px){
   .services{
     flex-direction: row;
-    flex-wrap: wrap; // quebra pra linha de baixo, se fosse no-warp nao quebraria
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
   }
