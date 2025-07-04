@@ -5,6 +5,53 @@ import { PostProps } from '@/utils/post.type'
 import { Phone } from 'lucide-react';
 import { Container } from '@/components/container';
 import Image from 'next/image';
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params: { slug } }: {
+  params: { slug: string }
+}): Promise<Metadata>{
+
+  try{
+    const { objects }: PostProps = await getItemBySlug(slug)
+    .catch(() => {
+      return {
+        title: "DevMotors - Sua oficina especializada!",
+        description: "Oficina de carros em São Paulo",
+      }
+    })
+
+
+    return{
+      title: `DevMotors - ${objects[0].title}`,
+      description: `${objects[0].metadata.description.text}`,
+      keywords: ["devmotors", "troca de oleo", "devmotors troca de oleo"],
+      openGraph: {
+        title: `DevMotors - ${objects[0].title}`,
+        images: [objects[0].metadata.banner.url]
+      },
+      robots:{
+        index: true,
+        follow: true,
+        nocache: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          noimageindex: true,
+        }
+      }
+    }
+
+
+  }catch(err){
+    return {
+      title: "DevMotors - Sua oficina especializada!",
+      description: "Oficina de carros em São Paulo",
+    }
+  }
+
+
+}
+
 
 export default async function Page({ params: { slug } }: {
   params: { slug: string }
