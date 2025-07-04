@@ -12,8 +12,6 @@ interface SubMenuProp{
 
 export function Submenu({ menu }: SubMenuProp){
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(menu);
   
   useEffect(() => {
     const handleResize = () => {
@@ -48,16 +46,13 @@ export function Submenu({ menu }: SubMenuProp){
         )}
 
 
-        <li>
-          <Link href="/post/pagina-1">
-            Pagina 1
-          </Link>
-        </li>
-        <li>
-          <Link href="/post/pagina-2">
-            Pagina 2
-          </Link>
-        </li>
+        {menu.objects.map( item => (
+          <li>
+            <Link href={`/post/${item.slug}`}>
+              {item.title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </section>
   )
