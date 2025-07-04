@@ -10,7 +10,7 @@ export default async function Page({ params: { slug } }: {
   params: { slug: string }
 }){
   const { objects }: PostProps = await getItemBySlug(slug);
-  console.log(JSON.stringify(objects, null, 2));
+  //console.log(JSON.stringify(objects, null, 2));
 
   return(
     <>
@@ -52,7 +52,7 @@ export default async function Page({ params: { slug } }: {
               fill={true}
               priority={true}
               src={objects[0].metadata.description.banner.url}
-              sizes="(max-width: 480px) 100vw, (max-width: 1024px) 75vw, 60vw" // 60vw -> garantir o tamanho da imagem
+              sizes="(max-width: 480px) 100vw, (max-width: 1024px) 75vw, 60vw"
             />
           </div>
 
