@@ -1,5 +1,5 @@
 "use client"
-// nextjs.org/docs/app/api-reference/file-conventions/error
+
 import Link from "next/link"
 import styles from './error.module.scss';
 
