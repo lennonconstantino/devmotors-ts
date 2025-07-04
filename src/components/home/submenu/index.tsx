@@ -4,9 +4,16 @@ import Link from 'next/link'
 import styles from './styles.module.scss'
 
 import { X, Menu} from "lucide-react"
+import { MenuProps } from '@/utils/menu.type'
 
-export function Submenu(){
+interface SubMenuProp{
+  menu: MenuProps
+}
+
+export function Submenu({ menu }: SubMenuProp){
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log(menu);
   
   useEffect(() => {
     const handleResize = () => {
